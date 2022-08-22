@@ -40,8 +40,12 @@ def letters_to_points(letter):
 def calculate_score_for_word(word):
     return sum(letters_to_points(letter) for letter in word)
 
-# def find_longest_valid_word(letters):
-#     for permutation in permute(letters):
+def find_valid_word(letters):
+    for permutation in permute(letters):
+        if bisect_search_dict(permutation):
+            return permutation
+
+
 
 def bisect_search_dict(word, dct=DICTIONARY_CONTENTS):
     if not dct:
