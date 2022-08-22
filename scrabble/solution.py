@@ -57,6 +57,10 @@ def bisect_search_dict(word, dct=DICTIONARY_CONTENTS):
 
 
 def permute(letters, prepend = ''):
-    yield prepend + letters
-    for i, letter in enumerate(letters):
-        yield from permute(letters[:i] + letters[i+1:], letter)
+    if letters:
+        first, rest = letters[0], letters[1:]
+        for subp in permute(rest):
+            for i in range(len(subp) + 1):
+                yield subp[:i] + first + subp[i:]
+    else:
+        yield '' 
