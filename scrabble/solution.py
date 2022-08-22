@@ -43,4 +43,14 @@ def calculate_score_for_word(word):
 # def find_valid_word(letters):
 #     for permutation in permute(letters):
 
-#def bisect_search_dict()
+def bisect_search_dict(word, dct=DICTIONARY_CONTENTS):
+    if not dct:
+        return False
+    midpoint = len(dct) // 2
+    middle_word = dct[midpoint].strip()
+    if word == middle_word:
+        return True
+    elif word < middle_word:
+        return bisect_search_dict(word, dct[:midpoint])
+    elif word > middle_word:
+        return bisect_search_dict(word, dct[midpoint + 1:])
