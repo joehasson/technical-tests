@@ -62,7 +62,7 @@ def bisect_search_dict(word, dct=DICTIONARY_CONTENTS):
         return bisect_search_dict(word, dct[midpoint + 1:])
 
 
-def permute(letters, prepend = ''):
+def permute(letters):
     if letters:
         first, rest = letters[0], letters[1:]
         for subp in permute(rest):
