@@ -40,7 +40,7 @@ def letters_to_points(letter):
 def calculate_score_for_word(word):
     return sum(letters_to_points(letter) for letter in word)
 
-# def find_valid_word(letters):
+# def find_longest_valid_word(letters):
 #     for permutation in permute(letters):
 
 def bisect_search_dict(word, dct=DICTIONARY_CONTENTS):
@@ -54,3 +54,9 @@ def bisect_search_dict(word, dct=DICTIONARY_CONTENTS):
         return bisect_search_dict(word, dct[:midpoint])
     elif word > middle_word:
         return bisect_search_dict(word, dct[midpoint + 1:])
+
+
+def permute(letters, prepend = ''):
+    yield prepend + letters
+    for i, letter in enumerate(letters):
+        yield from permute(letters[:i] + letters[i+1:], letter)
