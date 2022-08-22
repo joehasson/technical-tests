@@ -1,3 +1,20 @@
+import random
+
+class Bag:
+    def __init__(self):
+        self.letters = ((['e'] * 12) + (['a', 'i'] * 9) + (['o'] * 8) +
+            (['n','r','t'] * 6) + (['l','s','u','d'] * 4) + (['g'] * 3)
+            + (['b','c','m','p','f','h','v','w','y'] * 2) + ['k','j','x','w','z'])
+        random.shuffle(self.letters)
+
+    def draw(self):
+        return self.letters.pop()
+    
+class Player:
+    def __init__(self, bag):
+        self.rack = [bag.draw() for i in range(7)]
+
+
 def letters_to_points(letter):
     letter = letter.lower()
     if letter in 'eaionrtlsu':
@@ -18,4 +35,6 @@ def letters_to_points(letter):
         raise BaseException()
     
 def calculate_score_for_word(word):
-    return sum(letter_to_points(letter) for letter in word)
+    return sum(letters_to_points(letter) for letter in word)
+
+
